@@ -13,9 +13,9 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 ---
-###Files Submitted & Code Quality
+### Files Submitted & Code Quality
 
-####1. Submitted Files
+#### 1. Submitted Files
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -23,24 +23,24 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup.md summarizing the results
 
-####2. Submission includes functional code
+#### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
 
-####3. Submission code is usable and readable
+#### 3. Submission code is usable and readable
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Model Architecture
+#### 1. Model Architecture
 The following the table shows the architecture of the model. It has been started from the 
 Nvidia Network (End-to-End approach). That network was too complicated
 for this task so this one is simpler version of Nvidia network.
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 As shown above the model includes dropout layers to avoid
 the overfitting. The data gathered using the simulator is splitted
@@ -52,19 +52,19 @@ train_samples, valid_samples = train_test_split(samples, test_size=0.2)
 The model was tested by running it through the simulator
 and ensuring that the vehicle could stay on the track.
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 Adam optimizer is used in this project. The inital learning rate is
 chosen as **0.0001** with **50** epochs.
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
 I drove the car and tried to keep the car in center for training.
 For details about how I created the training data, see the next section. 
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### 1. Solution Design Approach
 
 In order to finish the project I followed these steps:
 
@@ -89,7 +89,7 @@ also left the main road sometimes. I gathered more training data in zones that
 it had more difficutties and with that finally the car could finish one lap without 
 leaving the road.
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture (model.py lines 137-153)
 ```
@@ -132,7 +132,7 @@ Non-trainable params: 0.0
 _________________________________________________________________
 ```
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center
 lane driving. I then recorded the vehicle recovering from the left side and right 

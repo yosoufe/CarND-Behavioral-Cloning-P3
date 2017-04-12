@@ -2,3 +2,4 @@ linux_sim.x86_64
 .idea
 models
 run1
+model_exploration.py
