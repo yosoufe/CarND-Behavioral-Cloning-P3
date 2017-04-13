@@ -12,6 +12,15 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
+
+[//]: # (Image References)
+
+[image1]: ./imgs/center_2017_04_10_22_37_40_125 angle 0.1.jpg "Example of Driving on center of the road"
+[image2]: ./imgs/recovery center_2017_04_10_22_36_59_061.jpg "Recovery From left"
+[image3]: ./imgs/recovery right center_2017_04_10_23_21_45_510.jpg "Recovery From right"
+[image4]: ./imgs/center_2017_04_10_22_37_40_125 angle 0.1 (flipped).jpg "Flipped Image"
+[image5]: ./imgs/steering angle correction.png "Angle Correction Calculation"
+
 ---
 ### Files Submitted & Code Quality
 
@@ -81,7 +90,12 @@ functions.
 I used the other cameras in training data using some correction
 to the steering angles of the non-center camera images. That helped a lot.
 Without that, it was very difficult for the car to save itself from not going outside
-of the road. For validation, I only used the center camera.
+of the road.
+
+   I used the following calculation to correct the steering angles corresponding to 
+other non-center camera images. Choosing the correct parameters (L, R, and r) were also 
+important
+![alt text][image4]
 0. Sometimes I found usefull just to simply train the network for more epoch.
 So in code I created sectoion to do that (model.py line 154-156).
 0. After all of these, still the car could not get some of the curvy turns and 
@@ -134,17 +148,32 @@ _________________________________________________________________
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center
-lane driving. I then recorded the vehicle recovering from the left side and right 
+To capture good driving behavior, I first recorded a lap and tried to keep the car in the middle.
+This an example of it:
+![alt text][image1]
+
+I then recorded the vehicle recovering from the left side and right 
 sides of the road back to center so that the vehicle would learn how to drive
 itself in case it was going to get outside of the road. I also gathered some data, by
-driving the car in reverese of startup direction.
+driving the car in reverese of startup direction. The following images is showing the 
+recovery image. That means I started recording from left or right side of the track toward the
+center to teach the model how to do it.
+
+
+I had also difficulty specially at the point of road showing on first image. The car was drving
+itself exactly toward this cubic onstacle and crashed it. Therefore I gathered more data
+around this zone.
+
+![alt text][image2]
+![alt text][image3]
 
 To augment the data sat, I also flipped images and angles thinking that this would be more 
-data to generalise the model.
+data to generalise the model. The following image is flipped image of the first image.
+
+![alt text][image4]
 
 After the collection process, I had 3894 number of data points. I then preprocessed 
-this data by cropping a part of dimages from the top and buttom of the image to
+this data by cropping a part of images from the top and buttom of the image to
 avoid distractions for the model. And then Normalised the input image. These are 
 done as Keras layers (model.py lines 137,138) which made the model easier for
 further use.
