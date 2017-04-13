@@ -102,7 +102,7 @@ important
 So in code I created sectoion to do that (model.py line 154-156).
 7. After all of these, still the car could not get some of the curvy turns and 
 also left the main road sometimes. I gathered more training data in zones that 
-it had more difficutties and with that finally the car could finish one lap without 
+it had more difficulties and with that finally the car could finish one lap without 
 leaving the road.
 
 #### 2. Final Model Architecture
@@ -148,6 +148,24 @@ Non-trainable params: 0.0
 _________________________________________________________________
 ```
 
+which is created using the following code:
+```angularjs
+model.add(Lambda(lambda x: x / 127.5 - 1.0, input_shape=image_shape, output_shape=image_shape))
+model.add(Cropping2D(cropping=((50, 20), (0, 0))))
+model.add(Conv2D(5, (5, 5), activation='tanh'))
+model.add(pooling.MaxPool2D(pool_size=(2, 2)))
+model.add(Conv2D(10, (5, 5), activation='relu'))
+model.add(pooling.MaxPool2D(pool_size=(2, 2)))
+model.add(Dropout(0.5))
+model.add(Conv2D(15, (3, 3), activation='relu'))
+model.add(pooling.MaxPool2D(pool_size=(4, 4)))
+model.add(Dropout(0.5))
+model.add(Conv2D(20,(3,3),activation='tanh'))
+model.add(Flatten())
+model.add(Dense(200,activation='tanh'))
+model.add(Dense(25))
+model.add(Dense(1))
+```
 #### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded a lap and tried to keep the car in the middle.
