@@ -20,6 +20,7 @@ The goals / steps of this project are the following:
 [image3]: ./imgs/recovery_right_center_2017_04_10_23_21_45_510.jpg "Recovery From right"
 [image4]: ./imgs/center_2017_04_10_22_37_40_125_angle_0.1_(flipped).jpg "Flipped Image"
 [image5]: ./imgs/steering_angle_correction.png "Angle Correction Calculation"
+[image6]: ./imgs/cropped.png "Image Cropping"
 
 ---
 ### Files Submitted & Code Quality
@@ -181,20 +182,24 @@ center to teach the model how to do it.
 
 
 I had also difficulty specially at the point of road showing on first image. The car was drving
-itself exactly toward this cubic onstacle and crashed it. Therefore I gathered more data
+itself exactly toward this cubic obstacle and crashed it. Therefore I gathered more data
 around this zone.
 
 ![alt text][image2]
 ![alt text][image3]
 
-To augment the data sat, I also flipped images and angles thinking that this would be more 
+To augment the dataset, I also flipped images and angles thinking that this would be more 
 data to generalise the model. The following image is flipped image of the first image.
 
 ![alt text][image4]
 
 After the collection process, I had 3894 number of data points. I then preprocessed 
 this data by cropping a part of images from the top and buttom of the image to
-avoid distractions for the model. And then Normalised the input image. These are 
+avoid distractions for the model. The following image shows that:
+
+![alt text][image6]
+
+And then Normalised the input image. These are 
 done as Keras layers (model.py lines 137,138) which made the model easier for
 further use.
 
