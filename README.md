@@ -77,16 +77,16 @@ For details about how I created the training data, see the next section.
 
 In order to finish the project I followed these steps:
 
-0. I started to learn using the simulator, gathering some data and 
+1. I started to learn using the simulator, gathering some data and 
 generate the first model using Keras including only Dense layer and 
 train it. Then I learned how to run the car in simulator using my
 very basic network. After learning the tools,
-0. the cropping and normalisation is added to the begining to the network.
-0. I decided to use the Nvidia Network but I found it too complicated for
+2. the cropping and normalisation is added to the begining to the network.
+3. I decided to use the Nvidia Network but I found it too complicated for
 this task so I started to simplify and modify it.
-0. I tried different number of layers with differebt sizes and activation
+4. I tried different number of layers with differebt sizes and activation
 functions.
-0. I noticed that I should also augment the data. I flipped the images and angles.
+5. I noticed that I should also augment the data. I flipped the images and angles.
 I used the other cameras in training data using some correction
 to the steering angles of the non-center camera images. That helped a lot.
 Without that, it was very difficult for the car to save itself from not going outside
@@ -95,10 +95,12 @@ of the road.
    I used the following calculation to correct the steering angles corresponding to 
 other non-center camera images. Choosing the correct parameters (L, R, and r) were also 
 important
-![alt text][image4]
-0. Sometimes I found usefull just to simply train the network for more epoch.
+
+![alt text][image5]
+
+6. Sometimes I found usefull just to simply train the network for more epoch.
 So in code I created sectoion to do that (model.py line 154-156).
-0. After all of these, still the car could not get some of the curvy turns and 
+7. After all of these, still the car could not get some of the curvy turns and 
 also left the main road sometimes. I gathered more training data in zones that 
 it had more difficutties and with that finally the car could finish one lap without 
 leaving the road.
