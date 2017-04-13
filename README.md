@@ -17,9 +17,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./imgs/center_2017_04_10_22_37_40_125_angle_0.1.jpg "Example of Driving on center of the road"
 [image2]: ./imgs/recovery_center_2017_04_10_22_36_59_061.jpg "Recovery From left"
-[image3]: ./imgs/recovery_right center_2017_04_10_23_21_45_510.jpg "Recovery From right"
+[image3]: ./imgs/recovery_right_center_2017_04_10_23_21_45_510.jpg "Recovery From right"
 [image4]: ./imgs/center_2017_04_10_22_37_40_125_angle_0.1_(flipped).jpg "Flipped Image"
-[image5]: ./imgs/steering angle correction.png "Angle Correction Calculation"
+[image5]: ./imgs/steering_angle_correction.png "Angle Correction Calculation"
 
 ---
 ### Files Submitted & Code Quality
