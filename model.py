@@ -70,9 +70,7 @@ def generator(samples, batch_size=50, isTraining=True):
                     angles.append(measurement_flipped)
 
                     image_path = batch_sample[1].strip()
-                    # image_path = (dataset_folder + '/' + batch_sample[1].strip())
                     image = cv2.imread(image_path)
-                    # left_angle = center_angle + 0.15
                     left_angle = -atan((r * sin(-center_angle) - l) / r)
                     images.append(image)
                     angles.append(left_angle)
@@ -83,9 +81,7 @@ def generator(samples, batch_size=50, isTraining=True):
                     angles.append(measurement_flipped)
 
                     image_path = batch_sample[2].strip()
-                    # image_path = (dataset_folder + '/' + batch_sample[2].strip())
                     image = cv2.imread(image_path)
-                    # right_angle = center_angle - 0.15
                     right_angle = -atan((r * sin(-center_angle) + l) / r)
                     images.append(image)
                     angles.append(right_angle)
@@ -110,13 +106,6 @@ batch_size = 128  # consider memory for batch_size * 3(images) * 2 (flips)
 train_generator = generator(train_samples, batch_size, isTraining=True)
 valid_generator = generator(valid_samples, batch_size, isTraining=False)
 
-# Trimmed image format
-# print(dataset_folder + samples[0][0])
-# print(len(train_samples))
-# test_image = cv2.imread(dataset_folder +'/'+ samples[0][0])
-# print(type(test_image))
-# print('image shape:',test_image.shape)
-
 test_path = train_samples[0][0].strip()
 print(test_path)
 print(len(train_samples))
@@ -126,16 +115,13 @@ print(type(test_image))
 print('image shape:', test_image.shape)
 
 image_shape = test_image.shape  # (160,320,3)
-# resized_image_shape = (45,160,3)
-# from keras.backend import tf as ktf
-# cv2.resize(x,None,fx=0.5,fy=0.5)
-# ktf.image.resize_images(x,(45,160))
+cropped_image_shape = (image_shape[0]-50-20, image_shape[1], image_shape[2])
 
 train_from_zero = True
 model = Sequential()
 if(train_from_zero):
-    model.add(Lambda(lambda x: x / 127.5 - 1.0, input_shape=image_shape, output_shape=image_shape))
-    model.add(Cropping2D(cropping=((50, 20), (0, 0))))
+    model.add(Cropping2D(cropping=((50, 20), (0, 0)), input_shape=image_shape))
+    model.add(Lambda(lambda x: x / 127.5 - 1.0, output_shape=cropped_image_shape))
     model.add(Conv2D(5, (5, 5), activation='tanh'))
     model.add(pooling.MaxPool2D(pool_size=(2, 2)))
     model.add(Conv2D(10, (5, 5), activation='relu'))  # 36,strides=(3,3)
@@ -163,7 +149,6 @@ epochs_hist = model.fit_generator(train_generator, steps_per_epoch=len(train_sam
 
 model.save('./model.hp', overwrite=True)
 
-# print(epochs_hist.history.keys())
 
 import matplotlib.pyplot as plt
 
