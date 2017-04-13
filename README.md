@@ -47,7 +47,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. Model Architecture
 The following the table shows the architecture of the model. It has been started from the 
-(Nvidia Network)[https://arxiv.org/abs/1604.07316] (End-to-End approach). That network was too complicated
+[Nvidia Network](https://arxiv.org/abs/1604.07316) (End-to-End approach). That network was too complicated
 for this task so this one is simpler version of Nvidia network.
 
 #### 2. Attempts to reduce overfitting in the model
